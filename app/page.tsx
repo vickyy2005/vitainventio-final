@@ -212,7 +212,7 @@ export default function HomePage() {
           <Reveal className="workflow-left">
             <span className="hero-kicker"><span className="status-dot" /> OUR PROCESS</span>
             <h2>Our Smart<br />Development<br />Workflow</h2>
-            <a href="tel:+1234567890" className="btn-lime call-btn">
+            <a href="tel:+919175723038" className="btn-lime call-btn">
               <PhoneCall size={16} /> CALL NOW
             </a>
           </Reveal>

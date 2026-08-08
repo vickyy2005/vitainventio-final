@@ -105,7 +105,7 @@ export default function PortfolioPage() {
               <button onClick={scrollToCatalog} className="btn-lime">
                 View Projects
               </button>
-              <a href="https://wa.me/+1234567890" target="_blank" rel="noopener noreferrer" className="btn-outline">
+              <a href="https://wa.me/919175723038" target="_blank" rel="noopener noreferrer" className="btn-outline">
                 <MessageCircle size={16} /> WhatsApp Us
               </a>
             </div>
