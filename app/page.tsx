@@ -48,7 +48,7 @@ function HighlightedCard({ demo, idx }: { demo: any; idx: number }) {
         <p>{demo.desc}</p>
         <div className="hw-actions">
           <a href="/contact" className="btn-dark">Get Similar Website</a>
-          <a href="/contact" className="btn-lime">Visit Live Website</a>
+          <a href={demo.link} target="_blank" rel="noopener noreferrer" className="btn-lime">Visit Live Website</a>
         </div>
       </div>
     </Reveal>
@@ -146,25 +146,28 @@ export default function HomePage() {
           <div className="hw-grid">
             {[
               {
-                tag: 'Business Website',
-                title: 'Business Website Demo 1',
-                desc: 'Premium fragrance e-commerce store featuring product collections, scent-based shopping, promotional offers and a refined luxury shopping experience.',
+                tag: 'Web Agency',
+                title: 'Web Agency',
+                desc: 'A modern, fast-loading, and creative design agency landing page featuring premium dark aesthetics, clean copy, and interactive sound effects.',
                 img: '/demo1.png',
-                video: '/web-agency.mp4'
+                video: '/web-agency.mp4',
+                link: 'https://vitainventio.vercel.app/'
               },
               {
-                tag: 'Business Website',
-                title: 'Business Website Demo 2',
-                desc: 'A premium photography website designed to showcase portfolio work with strong visuals and conversion-focused sections.',
+                tag: 'Interior Design',
+                title: 'Anand Interiors',
+                desc: 'Premium PVC solutions, modular furniture, and custom interior design showcases for residential and commercial spaces.',
                 img: '/demo2.png',
-                video: '/anand-interiors.mp4'
+                video: '/anand-interiors.mp4',
+                link: 'https://anandinterior.in'
               },
               {
-                tag: 'eCommerce Website',
-                title: 'eCommerce Store Demo',
-                desc: 'A modern online store experience with product-focused layout, clean navigation, trust sections, and mobile-first shopping flow.',
+                tag: 'eCommerce Jewelry',
+                title: 'Guru Ganesh Jewellers',
+                desc: 'Premium handcrafted fine jewelry store showcasing custom collections and traditional Indian ornaments.',
                 img: '/demo3.png',
-                video: '/guru-ganesh.mp4'
+                video: '/guru-ganesh.mp4',
+                link: 'https://3-3514.vercel.app'
               }
             ].map((demo, idx) => (
               <HighlightedCard key={idx} demo={demo} idx={idx} />
