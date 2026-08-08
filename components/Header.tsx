@@ -3,17 +3,23 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, ArrowRight, Menu, X, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { navItems } from './constants'
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
 
   return (
     <header className={`site-nav ${scrolled ? 'site-nav-scrolled' : ''}`}>
@@ -43,20 +49,20 @@ export function Header() {
         <nav className="mobile-nav" aria-label="Mobile navigation">
           {navItems.map((item) => (
             <div key={item.id}>
-              <Link href={item.id} onClick={() => setMenuOpen(false)}>
+              <Link href={item.id}>
                 {item.label}
                 {item.dropdown ? <ChevronDown /> : <ArrowRight />}
               </Link>
               {item.dropdown && (
                 <div className="mobile-nav-dropdown">
                   {item.dropdown.map(dropItem => (
-                    <Link key={dropItem.label} href={dropItem.id} onClick={() => setMenuOpen(false)}>— {dropItem.label}</Link>
+                    <Link key={dropItem.label} href={dropItem.id}>— {dropItem.label}</Link>
                   ))}
                 </div>
               )}
             </div>
           ))}
-          <Link className="mobile-nav-cta" href="/contact" onClick={() => setMenuOpen(false)}>Ready to Build <ArrowRight /></Link>
+          <Link className="mobile-nav-cta" href="/contact">Ready to Build <ArrowRight /></Link>
         </nav>
       )}
     </header>
