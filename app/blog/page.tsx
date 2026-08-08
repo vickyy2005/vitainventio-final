@@ -7,7 +7,7 @@ import { blogPosts } from '@/lib/blog'
 
 export default function BlogPage() {
   return (
-    <main className="site-shell pt-[84px]">
+    <main className="site-shell inner-page">
       <section id="blog" className="light-section blog-section">
         <div className="container">
           <Reveal>

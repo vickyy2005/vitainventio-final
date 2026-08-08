@@ -21,7 +21,7 @@ export default function BlogPostDetail() {
 
   if (!post) {
     return (
-      <main className="site-shell pt-[120px] pb-[100px]">
+      <main className="site-shell inner-page" style={{ paddingTop: '120px', paddingBottom: '100px' }}>
         <div className="container" style={{ textAlign: 'center', padding: '100px 0' }}>
           <h1 style={{ fontSize: '32px', marginBottom: '20px' }}>Article Not Found</h1>
           <p style={{ color: '#aaa', marginBottom: '40px' }}>The post you are looking for does not exist or has been moved.</p>
@@ -34,7 +34,7 @@ export default function BlogPostDetail() {
   }
 
   return (
-    <main className="site-shell pt-[84px]">
+    <main className="site-shell inner-page">
       <section className="article-section">
         <div className="article-container">
           <Reveal>

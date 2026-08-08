@@ -63,7 +63,7 @@ const processSteps = [
 export default function ServicesPage() {
   const [activeStep, setActiveStep] = useState(0)
   return (
-    <main className="site-shell pt-[84px]">
+    <main className="site-shell inner-page">
       <section id="services" className="dark-section services-section">
         <div className="container">
           <Reveal>

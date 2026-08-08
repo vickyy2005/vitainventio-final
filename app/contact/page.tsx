@@ -55,7 +55,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="site-shell pt-[84px]">
+    <main className="site-shell inner-page">
       <section id="contact" className="dark-section contact-section">
         <div className="container contact-layout">
           <Reveal className="contact-intro">

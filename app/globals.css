@@ -62,10 +62,14 @@ button { cursor: pointer; }
 .nav-cta { display: inline-flex; align-items: center; gap: 9px; border: 1px solid #e8ff00; border-radius: 999px; padding: 10px 24px; font-size: 14px; color: #e8ff00; transition: background .2s, color .2s, border-color .2s; font-weight: 700; }
 .nav-cta:hover { background: #e8ff00; color: #050b18; }
 .nav-cta svg, .text-link svg, .service-card a svg, .project-content a svg, .timeline-item > svg, .form-success button svg { width: 14px; height: 14px; }
-.menu-button { display: none; margin-left: auto; color: #ffffff; background: none; border: 0; }
+.menu-button { display: none; margin-left: auto; color: #ffffff; background: none; border: 0; padding: 12px; margin-right: -12px; cursor: pointer; align-items: center; justify-content: center; }
 .site-nav-scrolled .menu-button { color: #ffffff; }
-.menu-button svg { width: 22px; }
-.mobile-nav { position: absolute; top: 74px; left: 16px; right: 16px; display: flex; flex-direction: column; gap: 4px; padding: 14px; background: #0d1527; border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+.menu-button svg { width: 22px; height: 22px; display: block; }
+.mobile-nav { position: absolute; top: 74px; left: 16px; right: 16px; display: flex; flex-direction: column; gap: 4px; padding: 14px; background: #0d1527; border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); z-index: 100; }
+.inner-page { padding-top: 84px; }
+@media (max-width: 760px) {
+  .inner-page { padding-top: 72px; }
+}
 .mobile-nav a { display: flex; justify-content: space-between; align-items: center; padding: 14px; border-radius: 10px; color: #ffffff; font-size: 14px; }
 .mobile-nav a:hover { background: #0a1128; color: #e8ff00; }
 .mobile-nav-dropdown { display: flex; flex-direction: column; gap: 2px; padding-left: 12px; margin: 4px 14px 10px; border-left: 1px solid rgba(255,255,255,0.06); }
