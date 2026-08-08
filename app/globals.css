@@ -1311,7 +1311,7 @@ button { cursor: pointer; }
   }
 }
 
-/* Visual Active/Click Haptic Feedback */
+/* Visual Active/Click Haptic Feedback - Opacity shift only to avoid iOS/Safari touch cancellation bug */
 a:active, 
 button:active, 
 .btn-lime:active, 
@@ -1324,7 +1324,6 @@ button:active,
 .mobile-nav-cta:active,
 .wa-bubble-btn:active,
 .wa-start-btn:active {
-  transform: scale(0.96) !important;
-  opacity: 0.85 !important;
-  transition: transform 0.08s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.08s ease !important;
+  opacity: 0.75 !important;
+  transition: opacity 0.08s ease !important;
 }
