@@ -1,20 +1,37 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { ArrowDownRight, ArrowDownLeft, ArrowUpRight, Laptop, Network, Asterisk, PhoneCall, Check, X, Lightbulb } from 'lucide-react'
 import { Reveal, ButtonLink } from '@/components/shared'
 
 function HighlightedCard({ demo, idx }: { demo: any; idx: number }) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 1024px)').matches || ('ontouchstart' in window))
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile && videoRef.current) {
+      // Force play video continuously on mobile/touch screens
+      videoRef.current.play().catch(() => {})
+    }
+  }, [isMobile])
 
   const handleMouseEnter = () => {
-    if (videoRef.current) {
+    if (!isMobile && videoRef.current) {
       videoRef.current.play().catch(() => {})
     }
   }
 
   const handleMouseLeave = () => {
-    if (videoRef.current) {
+    if (!isMobile && videoRef.current) {
       videoRef.current.pause()
       videoRef.current.currentTime = 0
     }
@@ -22,29 +39,39 @@ function HighlightedCard({ demo, idx }: { demo: any; idx: number }) {
 
   return (
     <Reveal className="hw-card" key={idx}>
-      <div 
-        className="hw-image-wrap"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ position: 'relative', overflow: 'hidden' }}
+      <a 
+        href={demo.link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="hw-image-wrap-link"
+        style={{ display: 'block', width: '100%' }}
       >
-        {demo.video ? (
-          <video 
-            ref={videoRef}
-            src={demo.video}
-            loop 
-            muted 
-            playsInline
-            className="hw-card-video"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
-          />
-        ) : (
-          <img src={demo.img} alt={demo.title} />
-        )}
-      </div>
+        <div 
+          className="hw-image-wrap"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          style={{ position: 'relative', overflow: 'hidden' }}
+        >
+          {demo.video ? (
+            <video 
+              ref={videoRef}
+              src={demo.video}
+              loop 
+              muted 
+              playsInline
+              className="hw-card-video"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+            />
+          ) : (
+            <img src={demo.img} alt={demo.title} />
+          )}
+        </div>
+      </a>
       <div className="hw-content">
         <span className="hw-tag">{demo.tag}</span>
-        <h3>{demo.title}</h3>
+        <a href={demo.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <h3 className="hw-card-title" style={{ transition: 'color 0.2s' }}>{demo.title}</h3>
+        </a>
         <p>{demo.desc}</p>
         <div className="hw-actions">
           <a href="/contact" className="btn-dark">Get Similar Website</a>
